@@ -1,0 +1,10 @@
+<div style='margin:40px'>
+
+  <% @tasks.each_with_index do |task, index| %>
+    <p><%= index + 1 %><p>
+    <p><%= task.note %><p>
+    <p><%= task.due_date %><p>
+    <br>
+  <% end %>
+
+</div>

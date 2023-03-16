@@ -24,5 +24,8 @@
 9. add model
 10. add seeds
 11. rails db:seed / confirm creation in console
+12. initial commit db working
+13. rails server
+14. add controller, view, and routing for tasks
 
 # nav bar set up

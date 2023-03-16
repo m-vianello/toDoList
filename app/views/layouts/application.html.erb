@@ -8,9 +8,16 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="offcanvas-navbar.css" rel="stylesheet">
   </head>
 
   <body>
+
+
+
     <%= yield %>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="offcanvas-navbar.js"></script>
   </body>
 </html>

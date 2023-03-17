@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'net-http'
 gem 'cssbundling-rails', '~> 1.1', '>= 1.1.2'
+gem 'jquery-turbolinks'
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

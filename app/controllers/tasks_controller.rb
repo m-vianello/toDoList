@@ -14,7 +14,7 @@ class TasksController < ApplicationController
       flash[:success] = "task updated!"
       redirect_to tasks_path
     else
-      flash[:alrert] = "edit not successful!"
+      flash[:alert] = "edit not successful!"
       redirect_to edit_task_path(@task.id)
     end
   end
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
       flash[:success] = "task created!"
       redirect_to tasks_path
     else
-      flash[:alrert] = "creation not successful!"
+      flash[:alert] = "creation not successful!"
       redirect_to new_task_path
     end
   end

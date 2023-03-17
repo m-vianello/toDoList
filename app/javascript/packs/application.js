@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "jquery"
 
 Rails.start()
 Turbolinks.start()
@@ -14,12 +15,16 @@ ActiveStorage.start()
 
 function changeColor(color) {
   document.getElementById('changeColor').style.color=color
+  console.log("color change!")
 }
 
 window.changeColor = changeColor
 
-// document.addEventListener("DOMContentLoaded", function(event) {
-//   document.querySelector('#navbarSideCollapse').addEventListener('click', () => {
-//     document.querySelector('.offcanvas-collapse').classList.toggle('open')
+// console.log('outisdemyevent')
+//   console.log('myevent')
+//   const button = document.getElementById("navbarSideCollapse")
+//   button.addEventListener("click", (event) => {
+//     console.log('butts')
 //   })
-// });
+
+// console.log('buts more buts')

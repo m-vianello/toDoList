@@ -1,4 +1,4 @@
-<h1 id="changeColor">Index
+<h1 id="changeColor">My ToDoList
   <i class="bi-globe"></i>
 </h1>
 <input type="button" onclick="changeColor('red')" value="Make red">
@@ -6,7 +6,6 @@
 
 
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-  <h6 class="border-bottom pb-2 mb-0">Recent ToDos</h6>
   <% @tasks.each do |task| %>
     <div class="d-flex text-muted pt-3">
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
@@ -30,7 +29,8 @@
           <% end %>
         </div>
         </div>
-        <span class="d-block"><%= task.note %></span>
+
+        <p class="ml-6"><%= task.note %></p>
       </div>
     </div>
   <% end %>

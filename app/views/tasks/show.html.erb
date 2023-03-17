@@ -1,0 +1,8 @@
+<%= link_to "view all tasks", tasks_path %>
+<br>
+SHOW
+<br>
+<p>Task Id:  <%= @task.id %><p>
+<p>Note:  <%= @task.note %><p>
+<p>Due:  <%= @task.due_date %><p>
+<%= link_to "edit", edit_task_path(@task.id) %>

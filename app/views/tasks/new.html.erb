@@ -1,0 +1,13 @@
+<%= link_to "view all tasks", tasks_path %>
+<br>
+CREATE
+<br>
+<%= form_with model: @task do |f| %>
+<%= f.label :note %>
+<%= f.text_field :note %>
+<%= f.label :due_date %>
+<%= f.datetime_field :due_date %>
+<%= f.label :completed_at %>
+<%= f.datetime_field :completed_at %>
+<%= f.submit %>
+<% end %>

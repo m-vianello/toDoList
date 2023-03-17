@@ -27,5 +27,16 @@
 12. initial commit db working
 13. rails server
 14. add controller, view, and routing for tasks
+15. index
+16. show
+17. create
+18. edit
+19. delete
 
-# nav bar set up
+
+# adding bootstrap to rails
+1. https://mixandgo.com/learn/ruby-on-rails/how-to-install-bootstrap
+
+# adding js
+
+# deploy

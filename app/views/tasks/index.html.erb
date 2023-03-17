@@ -1,13 +1,37 @@
-<%= link_to "create", new_task_path %>
-<br>
-<% @tasks.each do |task| %>
-  <p>Task Id:  <%= task.id %><p>
-  <p>Note:  <%= task.note %><p>
-  <p>Due:  <%= task.due_date %><p>
-  <%= link_to "view", task_path(task.id) %>
-  <%= link_to "edit", edit_task_path(task.id) %>
-  <%= link_to "destroy", task_path(task.id), method: :delete %>
-  <br>
-  <br>
-  <br>
-<% end %>
+<h1 id="changeColor">Index
+  <i class="bi-globe"></i>
+</h1>
+<input type="button" onclick="changeColor('red')" value="Make red">
+<input type="button" onclick="changeColor('blue')" value="Make blue">
+
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+  <h6 class="border-bottom pb-2 mb-0">Recent ToDos</h6>
+  <% @tasks.each do |task| %>
+    <div class="d-flex text-muted pt-3">
+      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        <div class="d-flex justify-content-between">
+          <div class="">
+            <strong class="text-gray-dark">Task# <%= task.id %></strong>
+            Due:  <%= task.due_date %>
+          </div>
+          <div class="">
+
+          <%= link_to task_path(task.id) do %>
+            <%= render "folder_open_svg" %>
+          <% end %>
+
+          <%= link_to edit_task_path(task.id) do %>
+            <%= render "pencil_svg" %>
+          <% end %>
+
+          <%= link_to task_path(task.id), method: :delete do %>
+             <%= render "trash_svg" %>
+          <% end %>
+        </div>
+        </div>
+        <span class="d-block"><%= task.note %></span>
+      </div>
+    </div>
+  <% end %>
+</div>

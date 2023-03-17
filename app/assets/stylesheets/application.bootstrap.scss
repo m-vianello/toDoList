@@ -1,0 +1,27 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import 'variables';
+
+// green #26D95D
+// blue #2649D9
+// pink #D926A2
+// yellow #D9B626
+
+:root {
+  --green: #26D95D;
+  --blue: #2649D9;
+  --pink: #D926A2;
+  --yellow: #D9B626;
+}
+
+.green {
+  color: var(--green);
+}
+
+a, a:hover, a:focus {
+  text-decoration: none !important;
+}
+
+.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
+  color: orangered;
+}

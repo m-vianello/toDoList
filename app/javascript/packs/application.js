@@ -11,3 +11,15 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+function changeColor(color) {
+  document.getElementById('changeColor').style.color=color
+}
+
+window.changeColor = changeColor
+
+// document.addEventListener("DOMContentLoaded", function(event) {
+//   document.querySelector('#navbarSideCollapse').addEventListener('click', () => {
+//     document.querySelector('.offcanvas-collapse').classList.toggle('open')
+//   })
+// });

@@ -13,13 +13,8 @@
             </div>
 
             <div class="col-12  mb-3">
-              <label for="address" class="form-label">Due Date</label>
-              <%= f.datetime_field :due_date, { class: "form-control" } %>
-            </div>
-
-            <div class="col-12  mb-3">
-              <label for="address" class="form-label">Completed Date</label>
-              <%= f.datetime_field :completed_at, { class: "form-control" } %>
+              <label for="address" class="form-label">Due Date (default 1 week)</label>
+              <%= f.datetime_field :due_date, { class: "form-control", value: (Time.zone.now + 1.week).strftime("%Y-%m-%dT%k:%M") } %>
             </div>
 
             <div class="col-12 text-center">

@@ -1,16 +1,16 @@
 <%= form_for @task, url: task_mark_complete_path(@task.id), method: :patch do |f| %>
   <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h1><strong class="text-gray-dark">Task# <%= @task.id %></strong></h1>
-    <%= link_to task_path(@task.id) do %>
-      <%= render "folder_open_svg" %>
+    <%= link_to task_path(@task.id), { style: "text-decoration: none" } do %>
+      <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
     <% end %>
 
-    <%= link_to edit_task_path(@task.id) do %>
-      <%= render "pencil_svg" %>
+    <%= link_to edit_task_path(@task.id), { style: "text-decoration: none" } do %>
+      <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
     <% end %>
 
-    <%= link_to task_path(@task.id), { style: "margin-left: 8px;" }, method: :delete  do %>
-      <%= render "trash_svg" %>
+    <%= link_to task_path(@task.id), { style: "margin-left: 8px; text-decoration: none" }, method: :delete  do %>
+      <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
     <% end %>
     <div class="d-flex text-muted pt-3">
       <div class="pb-3 mb-0 small lh-sm w-100">

@@ -49,7 +49,6 @@ class TasksController < ApplicationController
   def mark_complete
     if @task.update!(completed_at: params[:task][:completed_at])
       @task.save!
-      binding.pry
       flash[:success] = "task completed!"
       redirect_to tasks_path
     else

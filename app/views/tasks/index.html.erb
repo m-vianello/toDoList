@@ -24,9 +24,14 @@
             <%= render "pencil_svg" %>
           <% end %>
 
-          <%= link_to task_path(task.id), method: :delete do %>
+          <%= link_to task_complete_path(task.id) do %>
+             <%= render "check_svg" %>
+          <% end %>
+
+          <%= link_to task_path(task.id), { style: "margin-left: 8px;" }, method: :delete  do %>
              <%= render "trash_svg" %>
           <% end %>
+
         </div>
         </div>
 

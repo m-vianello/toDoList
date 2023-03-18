@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy, :complete, :mark_complete]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.not_completed
   end
 
   def show; end

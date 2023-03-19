@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy, :complete, :mark_complete]
 
   def index
-    @tasks = Task.not_completed
+    @tasks = Task.in_progress
+  end
+
+  def completed_index
+    @tasks = Task.completed
   end
 
   def show; end
@@ -25,7 +29,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    
+
     if @task.save
       flash[:success] = "task created!"
       redirect_to tasks_path

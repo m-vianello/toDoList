@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :note
       t.datetime :due_date
       t.datetime :completed_at
+      t.integer :effort_level
 
       t.timestamps
     end

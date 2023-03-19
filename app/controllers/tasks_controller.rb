@@ -25,6 +25,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    
     if @task.save
       flash[:success] = "task created!"
       redirect_to tasks_path
@@ -59,7 +60,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:note, :due_date, :completed_at)
+    params.require(:task).permit(:note, :due_date, :completed_at, :effort_level)
   end
 
 

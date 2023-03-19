@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_191902) do
     t.string "note"
     t.datetime "due_date"
     t.datetime "completed_at"
+    t.integer "effort_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

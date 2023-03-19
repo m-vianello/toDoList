@@ -21,37 +21,64 @@
             Due:  <%= task.due_date %>
           </div>
           <div class="">
+            <div class="row">
+              <div class="row">
+                <div class="col text-end">
+                  <%= link_to task_path(task.id), { style: "text-decoration: none" } do %>
+                    <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
+                  <% end %>
+                </div>
+                <div class="col text-end">
+                  <%= link_to edit_task_path(task.id), { style: "text-decoration: none" } do %>
+                    <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
+                  <% end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
 
-            <%= link_to task_path(task.id), { style: "text-decoration: none" } do %>
-              <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
-            <% end %>
-
-            <%= link_to edit_task_path(task.id), { style: "text-decoration: none" } do %>
-              <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
-            <% end %>
-
-            <%= link_to task_complete_path(task.id), { style: "text-decoration: none" } do %>
-              <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 150%"></i>
-            <% end %>
-
-            <%= link_to task_path(task.id), { style: "margin-left: 10px; text-decoration: none" }, method: :delete  do %>
-              <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
-            <% end %>
+                </div>
+                <div class="col mt-4 text-end">
+                  <%= link_to task_complete_path(task.id), { style: "text-decoration: none" } do %>
+                    <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 150%"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
 
-        <p class="ml-6"><%= task.note %></p>
-        <% if task.effort_level === 1 %>
-            <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
-        <% elsif task.effort_level === 2 %>
-          <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-          <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-        <% elsif task.effort_level === 3 %>
-          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-        <% end %>
+        <div class="row">
+          <div class="row">
+            <div class="col">
+              <p class="ml-6"><%= task.note %></p>
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <% if task.effort_level === 1 %>
+                  <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
+              <% elsif task.effort_level === 2 %>
+                <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
+                <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
+              <% elsif task.effort_level === 3 %>
+                <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+                <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+                <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+              <% end %>
+            </div>
+            <div class="col text-end">
+              <%= link_to task_path(task.id), { style: "margin-left: 10px; text-decoration: none" }, method: :delete  do %>
+                <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   <% end %>

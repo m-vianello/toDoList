@@ -4,8 +4,8 @@
       <i class="fa-solid fa-xmark" style="color:#16161D; font-size: 200%"></i>
     <% end %>
   </div>
-  <div class="col-3 pt-1">
-    <%= link_to new_task_path, { style: "margin-left: 8px; text-decoration: none" } do %>
+  <div class="col-3 pt-1 text-end">
+    <%= link_to new_task_path, { style: "margin-right: 20px; margin-left: 20px; text-decoration: none" } do %>
       <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
     <% end %>
   </div>
@@ -15,13 +15,13 @@
   <div class="row">
     <div class="col">
       <h1><strong class="text-gray-dark">Task# <%= @task.id %></strong></h1>
-      <div class="row g-0 p-2 rounded border h-75">
+      <div class="row g-0 p-2 rounded border h-75 text-muted">
         <div class="">
-          Due:  <br><%= @task.due_date %>
+          <p>Due:  <br><%= @task.due_date %></p>
         </div>
         <div class="">
           <% if @task.completed_at.present? %>
-            Completed:  <%= @task.completed_at %>
+            <p>Completed:  <%= @task.completed_at %></p>
           <% end %>
         </div>
       </div>
@@ -83,7 +83,7 @@
     </div>
   </div>
 
-  <div class="d-flex text-muted pt-3">
+  <div class="d-flex text-muted">
     <div class="w-100">
       <div class="rounded border p-2 mt-2">
         <div class="mb-5">

@@ -4,8 +4,8 @@
       <i class="fa-solid fa-xmark" style="color:#16161D; font-size: 200%"></i>
     <% end %>
   </div>
-  <div class="col-3 pt-1">
-    <%= link_to new_task_path, { style: "margin-left: 8px; text-decoration: none" } do %>
+  <div class="col-3 pt-1 text-end">
+    <%= link_to new_task_path, { style: "margin-right: 20px; margin-left: 20px; text-decoration: none" } do %>
       <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
     <% end %>
   </div>
@@ -17,7 +17,7 @@
     <div class="row">
     <div class="col">
       <h1><strong class="text-gray-dark">Task# <%= @task.id %></strong></h1>
-      
+
     </div>
     <div class="col text-end pr-3">
       <div class="row pb-3">

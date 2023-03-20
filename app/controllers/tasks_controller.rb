@@ -46,10 +46,8 @@ class TasksController < ApplicationController
     end
   end
 
-  def complete; end
-
   def mark_complete
-    if @task.update!(completed_at: params[:task][:completed_at])
+    if @task.update!(completed_at: Time.zone.now)
       @task.save!
       flash[:success] = "Task completed!"
       redirect_to tasks_path
@@ -59,10 +57,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def in_progress; end
-
   def mark_in_progress
-    # binding.pry
     if @task.update!(completed_at: nil)
       @task.save!
       flash[:success] = "Task returned to in-progress!"

@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   # get "/tasks_completed", to: "tasks#completed_index", as: :completed_tasks
 
   resources :tasks do
-    get :complete
     patch :mark_complete
 
-    get :in_progress
     patch :mark_in_progress
   end
 

@@ -21,12 +21,16 @@
     <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
   <% end %>
 
-  <%= link_to task_complete_path(@task.id), { style: "text-decoration: none" } do %>
-    <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 150%"></i>
+  <%= form_for @task, url: task_mark_complete_path(@task.id), method: :patch do |f| %>
+    <%= f.button nil, class: "btn p-0" do %>
+      <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 130%"></i>
+    <% end %>
   <% end %>
 
-  <%= link_to task_in_progress_path(@task.id), { style: "text-decoration: none" } do %>
-    <i class="fa-solid fa-repeat" style="color:#999999; font-size: 150%"></i>
+  <%= form_for @task, url: task_mark_in_progress_path(@task.id), method: :patch do |f| %>
+    <%= f.button nil, class: "btn" do %>
+      <i class="fa-solid fa-repeat" style="color:#D926A2; font-size: 150%"></i>
+    <% end %>
   <% end %>
 
   <%= link_to task_path(@task.id), { style: "margin-left: 8px; text-decoration: none" }, method: :delete do %>

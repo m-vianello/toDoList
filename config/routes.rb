@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :tasks do
     get :complete
     patch :mark_complete
+
+    get :in_progress
+    patch :mark_in_progress
   end
 
   # post "/task/:id/complete" => "tasks#complete", :as => :complete_task

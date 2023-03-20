@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:show, :edit, :update, :destroy, :complete, :mark_complete]
+  before_action :find_task, only: [:show, :edit, :update, :destroy, :complete, :mark_complete, :in_progress, :mark_in_progress]
 
   def index
     @tasks = Task.in_progress.order(:due_date)
@@ -51,10 +51,24 @@ class TasksController < ApplicationController
   def mark_complete
     if @task.update!(completed_at: params[:task][:completed_at])
       @task.save!
-      flash[:success] = "task completed!"
+      flash[:success] = "Task completed!"
       redirect_to tasks_path
     else
-      flash[:alert] = "completion not successful!"
+      flash[:alert] = "Completion not successful!"
+      redirect_to task_complete_path(@task.id)
+    end
+  end
+
+  def in_progress; end
+
+  def mark_in_progress
+    # binding.pry
+    if @task.update!(completed_at: nil)
+      @task.save!
+      flash[:success] = "Task returned to in-progress!"
+      redirect_to tasks_path
+    else
+      flash[:alert] = "Updating not successful!"
       redirect_to task_complete_path(@task.id)
     end
   end

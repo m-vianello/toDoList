@@ -1,20 +1,22 @@
-<h1 id="changeColor">
-  <i class="fa-solid fa-list-ul"></i>
-  My ToDoList
-</h1>
+<div class="row g-0 pt-1">
+
+  <div class="col-10">
+    <h1><i class="fa-solid fa-list-ul"></i> My ToDoList</h1>
+  </div>
+  <div class="col-2">
+    <%= link_to new_task_path, { style: "margin-left: 0px; text-decoration: none" } do %>
+      <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
+    <% end %>
+  </div>
+</div>
 
 <div class="container">
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs small lh-sm">
     <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="tab" href="#in_progress">In Progress</a>
+      <a class="nav-link active" data-bs-toggle="tab" href="#in_progress">In Progress(<%= @tasks.count %>)</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#completed">Completed</a>
-    </li>
-    <li class="pt-2">
-      <%= link_to new_task_path, { style: "margin-left: 30px; text-decoration: none" } do %>
-        <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
-      <% end %>
+      <a class="nav-link" data-bs-toggle="tab" href="#completed">Completed(<%= @completed_tasks.count %>)</a>
     </li>
   </ul>
 

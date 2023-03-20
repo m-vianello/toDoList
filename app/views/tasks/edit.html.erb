@@ -95,6 +95,13 @@
               <%= f.datetime_field :due_date, { class: "form-control" } %>
             </div>
 
+            <% if @task.completed_at.present? %>
+              <div class="col-12 mb-3">
+                <label for="address" class="form-label">Completed Date</label>
+                <%= f.datetime_field :completed_at, { class: "form-control", value: Time.new.strftime("%Y-%m-%dT%k:%M") } %>
+              </div>
+            <% end %>
+
             <div class="col-12 mb-3">
               <label for="effort_level" class="form-label">Effort Level</label>
               <div class="rounded border p-2">

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: "main#index"
 
-  get "/tasks_completed", to: "tasks#completed_index", as: :completed_tasks
-  
+  # get "/tasks_completed", to: "tasks#completed_index", as: :completed_tasks
+
   resources :tasks do
     get :complete
     patch :mark_complete

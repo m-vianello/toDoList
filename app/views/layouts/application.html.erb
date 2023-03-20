@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Todolist</title>
+    <title>ToDolist</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -51,19 +51,19 @@
     <div class="container" style='margin:10px'>
     <% flash.each do |type, msg| %>
       <% if type == "success" %>
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success ">
+          <button type="button" class="btn-close text-end" data-bs-dismiss="alert"></button>
           <%= msg %>
         </div>
       <% elsif type == "alert" %>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="btn-close text-end" data-bs-dismiss="alert"></button>
           <%= msg %>
         </div>
       <% end %>
     <% end %>
 
     <%= yield %>
-    <%#= javascript_pack_tag "offcanvas-navbar", "data-turbo-track": "reload", defer: true %>
-    <%#= javascript_include_tag "/asset/offcanvas-nav.js", "data-turbo-track": "reload", defer: true %>
     </div>
   </body>
 </html>

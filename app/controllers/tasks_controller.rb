@@ -2,11 +2,8 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy, :complete, :mark_complete]
 
   def index
-    @tasks = Task.in_progress
-  end
-
-  def completed_index
-    @tasks = Task.completed
+    @tasks = Task.in_progress.order(:due_date)
+    @completed_tasks = Task.completed.order(:completed_at)
   end
 
   def show; end
@@ -15,10 +12,10 @@ class TasksController < ApplicationController
 
   def update
     if @task.update!(task_params)
-      flash[:success] = "task updated!"
+      flash[:success] = "Task updated!"
       redirect_to tasks_path
     else
-      flash[:alert] = "edit not successful!"
+      flash[:alert] = "Update not successful!"
       redirect_to edit_task_path(@task.id)
     end
   end
@@ -31,20 +28,20 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      flash[:success] = "task created!"
+      flash[:success] = "Task created!"
       redirect_to tasks_path
     else
-      flash[:alert] = "creation not successful!"
+      flash[:alert] = "Creation not successful!"
       redirect_to new_task_path
     end
   end
 
   def destroy
     if @task.destroy
-      flash[:success] = "task destroyed!"
+      flash[:success] = "Task destroyed!"
       redirect_to tasks_path
     else
-      flash[:alrert] = "destruction not successful!"
+      flash[:alrert] = "Destruction not successful!"
       redirect_to task_path(@task.id)
     end
   end

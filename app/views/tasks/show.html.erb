@@ -1,59 +1,69 @@
-<div style="margin-top:100px">
-
-  <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h1><strong class="text-gray-dark">Task# <%= @task.id %></strong></h1>
-    <%= link_to edit_task_path(@task.id), { style: "text-decoration: none" } do %>
-      <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
+<div class="row ml-5">
+  <div class="col-9">
+    <%= link_to tasks_path, { style: "margin-left: 8px; text-decoration: none" } do %>
+      <i class="fa-solid fa-xmark" style="color:#16161D; font-size: 200%"></i>
     <% end %>
-
-     <%= link_to task_complete_path(@task.id), { style: "text-decoration: none" } do %>
-      <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 150%"></i>
+  </div>
+  <div class="col-3 pt-1">
+    <%= link_to new_task_path, { style: "margin-left: 8px; text-decoration: none" } do %>
+      <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
     <% end %>
+  </div>
+</div>
 
-    <%= link_to task_path(@task.id), { style: "margin-left: 8px; text-decoration: none" }, method: :delete do %>
-      <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
-    <% end %>
+<div class="mb-3 p-3 bg-body rounded shadow-sm">
+  <h1><strong class="text-gray-dark">Task# <%= @task.id %></strong></h1>
+  <%= link_to edit_task_path(@task.id), { style: "text-decoration: none" } do %>
+    <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
+  <% end %>
 
-    <div class="d-flex text-muted pt-3">
-      <div class="w-100">
-        <div class="justify-content-between">
-          <div class="row g-0 p-2 rounded border">
-            <div class="col">
-              Due:  <%= @task.due_date %>
-            </div>
-            <div class="col">
-              <% if @task.completed_at.present? %>
-                Completed:  <%= @task.completed_at %>
-              <% else %>
-                Completed:  <i>in progress...<i>
-              <% end %>
-            </div>
+    <%= link_to task_complete_path(@task.id), { style: "text-decoration: none" } do %>
+    <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 150%"></i>
+  <% end %>
+
+  <%= link_to task_path(@task.id), { style: "margin-left: 8px; text-decoration: none" }, method: :delete do %>
+    <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
+  <% end %>
+
+  <div class="d-flex text-muted pt-3">
+    <div class="w-100">
+      <div class="justify-content-between">
+        <div class="row g-0 p-2 rounded border">
+          <div class="col">
+            Due:  <%= @task.due_date %>
+          </div>
+          <div class="col">
+            <% if @task.completed_at.present? %>
+              Completed:  <%= @task.completed_at %>
+            <% else %>
+              <i>In progress</i>
+            <% end %>
           </div>
         </div>
+      </div>
 
-        <div class="rounded border p-2 mt-2">
-          <div class="mb-5">
-            <span class="d-block">Note: <%= @task.note %></span>
+      <div class="rounded border p-2 mt-2">
+        <div class="mb-5">
+          <span class="d-block">Note: <%= @task.note %></span>
+        </div>
+        <div class="pb-3" >
+        <% if @task.effort_level === 1 %>
+            <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
+        <% elsif @task.effort_level === 2 %>
+          <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
+          <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
+        <% elsif @task.effort_level === 3 %>
+          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+        <% end %>
+        </div>
+        <div class="border-top row m-1 g-0 pt-2">
+          <div class="col">
+            <span class="d-block">Created: <%= @task.created_at %></span>
           </div>
-          <div class="pb-3" >
-          <% if @task.effort_level === 1 %>
-              <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
-          <% elsif @task.effort_level === 2 %>
-            <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-            <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-          <% elsif @task.effort_level === 3 %>
-            <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-            <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-            <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-          <% end %>
-          </div>
-          <div class="border-top row m-1 g-0 pt-2">
-            <div class="col">
-              <span class="d-block">Created: <%= @task.created_at %></span>
-            </div>
-            <div class="col">
-              <span class="d-block">Updated: <%= @task.updated_at %></span>
-            </div>
+          <div class="col">
+            <span class="d-block">Updated: <%= @task.updated_at %></span>
           </div>
         </div>
       </div>

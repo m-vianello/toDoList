@@ -1,5 +1,19 @@
+<div class="row ml-5">
+  <div class="col-9">
+    <%= link_to tasks_path, { style: "margin-left: 8px; text-decoration: none" } do %>
+      <i class="fa-solid fa-xmark" style="color:#16161D; font-size: 200%"></i>
+    <% end %>
+  </div>
+  <div class="col-3 pt-1">
+    <%= link_to new_task_path, { style: "margin-left: 8px; text-decoration: none" } do %>
+      <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
+    <% end %>
+  </div>
+</div>
+
+
 <%= form_for @task do |f| %>
-  <div class="my-3 p-3 bg-body rounded shadow-sm">
+  <div class="mb-3 p-3 bg-body rounded shadow-sm">
     <h1><strong class="text-gray-dark">Task# <%= @task.id %></strong></h1>
     <%= link_to task_path(@task.id), { style: "text-decoration: none" } do %>
       <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
@@ -28,7 +42,7 @@
               <%= f.datetime_field :due_date, { class: "form-control" } %>
             </div>
 
-            <div class="col-12  mb-3">
+            <div class="col-12 mb-3">
               <label for="effort_level" class="form-label">Effort Level</label>
               <div class="rounded border p-2">
                 <div class="row">
@@ -45,12 +59,12 @@
                     <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
                   </div>
                 </div>
-                <%= f.range_field :effort_level, in: 1..3, step:'1', class:"slide form-controller w-100"%>
+                <%= f.range_field :effort_level, in: 1..3, step:'1', class:"slide form-controller w-100 mt-2"%>
               </div>
             </div>
 
             <div class="col-12 text-center">
-              <%= f.submit class: "w-25 btn btn-primary btn-lg" %>
+              <%= f.submit "Update", class: "w-25 btn btn-primary  btn-sm" %>
             </div>
           </div>
         </div>

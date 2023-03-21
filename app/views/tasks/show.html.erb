@@ -17,11 +17,11 @@
       <h1><strong class="text-gray-dark"><%= @task.title %></strong></h1>
       <div class="row g-0 p-2 rounded border h-75 text-muted">
         <div class="">
-          <p>Due:  <br><%= @task.due_date %></p>
+          <p>Due:  <br><%= @task.due_date.strftime("%l:%M%P %d/%m/%y") %></p>
         </div>
         <div class="">
           <% if @task.completed_at.present? %>
-            <p>Completed:  <%= @task.completed_at %></p>
+            <p>Completed:  <%= @task.completed_at.strftime("%l:%M%P %d/%m/%y") %></p>
           <% end %>
         </div>
       </div>

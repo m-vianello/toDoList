@@ -23,72 +23,81 @@
   <div class="tab-content">
     <div class="tab-pane container active" id="in_progress">
       <div class="my-3 p-3 bg-body rounded shadow-sm small lh-sm">
-        <% @tasks.each do |task| %>
-          <div class="text-muted py-3 border-bottom">
-            <div class="row g-0 w-100">
-              <div class="col w-75">
-                <div class="row">
-                  <strong class="text-gray-dark"><%= task.title %></strong>
-                </div>
-                <div class="row">
-                  <p>Due: <br> <%= task.due_date.strftime("%Y-%m-%d at %k:%M") %></p>
-                </div>
-                <div class="row">
-                  <p class=""><%= task.note %></p>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <% if task.effort_level === 1 %>
-                      <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
-                    <% elsif task.effort_level === 2 %>
-                      <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-                      <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-                    <% elsif task.effort_level === 3 %>
-                      <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-                      <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-                      <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-                    <% end %>
+        <% if @tasks.any? %>
+          <% @tasks.each do |task| %>
+            <div class="text-muted py-3 border-bottom">
+              <div class="row g-0 w-100">
+                <div class="col w-75">
+                  <div class="row">
+                    <strong class="text-gray-dark"><%= task.title %></strong>
                   </div>
-                </div>
-              </div>
-              <div class="col w-25 text-end">
-                <div class="row pb-3">
-                  <div class="col">
-                    <%= link_to task_path(task.id), { style: "text-decoration: none" } do %>
-                      <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
-                    <% end %>
+                  <div class="row">
+                    <p>Due: <br> <%= task.due_date.strftime("%l:%M%P %d/%m/%y") %></p>
                   </div>
-                  <div class="col">
-                    <%= link_to edit_task_path(task.id), { style: "text-decoration: none" } do %>
-                      <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
-                    <% end %>
+                  <div class="row">
+                    <p class=""><%= task.note %></p>
                   </div>
-                </div>
-                <div class="row pb-5">
-                  <div class="col">
-                    <%= link_to "#", { style: "text-decoration: none" } do %>
-                      <i class="fa-solid fa-repeat" style="color:#999999; font-size: 150%"></i>
-                    <% end %>
-                  </div>
-                  <div class="col">
-                    <%= form_for task, url: task_mark_complete_path(task.id), method: :patch do |f| %>
-                      <%= f.button nil, class: "btn p-0" do %>
-                        <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 130%"></i>
+                  <div class="row">
+                    <div class="col">
+                      <% if task.effort_level === 1 %>
+                        <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
+                      <% elsif task.effort_level === 2 %>
+                        <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
+                        <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
+                      <% elsif task.effort_level === 3 %>
+                        <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+                        <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+                        <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
                       <% end %>
-                    <% end %>
+                    </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col">
+                <div class="col w-25 text-end">
+                  <div class="row pb-3">
+                    <div class="col">
+                      <%= link_to task_path(task.id), { style: "text-decoration: none" } do %>
+                        <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
+                      <% end %>
+                    </div>
+                    <div class="col">
+                      <%= link_to edit_task_path(task.id), { style: "text-decoration: none" } do %>
+                        <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
+                      <% end %>
+                    </div>
                   </div>
-                  <div class="col">
-                    <%= link_to task_path(task.id), method: :delete do %>
-                      <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
-                    <% end %>
+                  <div class="row pb-5">
+                    <div class="col">
+                      <%= link_to "#", { style: "text-decoration: none" } do %>
+                        <i class="fa-solid fa-repeat" style="color:#999999; font-size: 150%"></i>
+                      <% end %>
+                    </div>
+                    <div class="col">
+                      <%= form_for task, url: task_mark_complete_path(task.id), method: :patch do |f| %>
+                        <%= f.button nil, class: "btn p-0" do %>
+                          <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 130%"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                    </div>
+                    <div class="col">
+                      <%= link_to task_path(task.id), method: :delete do %>
+                        <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          <% end %>
+        <% else %>
+          <div class="text-muted">
+            <p>
+              To create your first task click <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
+              in the upper right.
+            </p>
           </div>
         <% end %>
       </div>
@@ -96,76 +105,83 @@
 
     <div class="tab-pane container fade" id="completed">
       <div class="my-3 p-3 bg-body rounded shadow-sm small lh-sm">
-        <% @completed_tasks.each do |task| %>
-          <div class="text-muted py-3 border-bottom">
-            <div class="row g-0 w-100">
-              <div class="col w-75">
-                <div class="row">
-                  <strong class="text-gray-dark"><%= task.title %></strong>
-                </div>
-                <div class="row">
-                  <p>Completed: <br> <%= task.completed_at.strftime("%Y-%m-%d at %k:%M") %></p>
-                </div>
-                <div class="row">
-                  <p class=""><%= task.note %></p>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <% if task.effort_level === 1 %>
-                      <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
-                    <% elsif task.effort_level === 2 %>
-                      <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-                      <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-                    <% elsif task.effort_level === 3 %>
-                      <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-                      <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-                      <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-                    <% end %>
+        <% if @completed_tasks.any? %>
+          <% @completed_tasks.each do |task| %>
+            <div class="text-muted py-3 border-bottom">
+              <div class="row g-0 w-100">
+                <div class="col w-75">
+                  <div class="row">
+                    <strong class="text-gray-dark"><%= task.title %></strong>
                   </div>
-                </div>
-              </div>
-              <div class="col w-25 text-end">
-                <div class="row pb-3">
-                  <div class="col">
-                    <%= link_to task_path(task.id), { style: "text-decoration: none" } do %>
-                      <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
-                    <% end %>
+                  <div class="row">
+                    <p>Completed: <br> <%= task.completed_at.strftime("%l:%M%P %d/%m/%y") %></p>
                   </div>
-                  <div class="col">
-                    <%= link_to edit_task_path(task.id), { style: "text-decoration: none" } do %>
-                      <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
-                    <% end %>
+                  <div class="row">
+                    <p class=""><%= task.note %></p>
                   </div>
-                </div>
-                <div class="row pb-5">
-                  <div class="col">
-                    <%= form_for task, url: task_mark_in_progress_path(task.id), method: :patch do |f| %>
-                      <%= f.button nil, class: "btn p-0" do %>
-                        <i class="fa-solid fa-repeat" style="color:#D926A2; font-size: 130%"></i>
+                  <div class="row">
+                    <div class="col">
+                      <% if task.effort_level === 1 %>
+                        <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
+                      <% elsif task.effort_level === 2 %>
+                        <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
+                        <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
+                      <% elsif task.effort_level === 3 %>
+                        <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+                        <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
+                        <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
                       <% end %>
-                    <% end %>
+                    </div>
                   </div>
-                  <div class="col">
-                    <%= link_to "#", { style: "text-decoration: none" } do %>
-                      <i class="fa-regular fa-circle-check" style="color:#999999; font-size: 150%"></i>
-                    <% end %>
+                </div>
+                <div class="col w-25 text-end">
+                  <div class="row pb-3">
+                    <div class="col">
+                      <%= link_to task_path(task.id), { style: "text-decoration: none" } do %>
+                        <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
+                      <% end %>
+                    </div>
+                    <div class="col">
+                      <%= link_to edit_task_path(task.id), { style: "text-decoration: none" } do %>
+                        <i class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
+                      <% end %>
+                    </div>
                   </div>
+                  <div class="row pb-5">
+                    <div class="col">
+                      <%= form_for task, url: task_mark_in_progress_path(task.id), method: :patch do |f| %>
+                        <%= f.button nil, class: "btn p-0" do %>
+                          <i class="fa-solid fa-repeat" style="color:#D926A2; font-size: 130%"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="col">
+                      <%= link_to "#", { style: "text-decoration: none" } do %>
+                        <i class="fa-regular fa-circle-check" style="color:#999999; font-size: 150%"></i>
+                      <% end %>
+                    </div>
                   </div>
-                <div class="row">
-                  <div class="col"></div>
-                  <div class="col">
-                    <%= link_to task_path(task.id), { style: "text-decoration: none" }, method: :delete  do %>
-                      <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
-                    <% end %>
+                  <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                      <%= link_to task_path(task.id), { style: "text-decoration: none" }, method: :delete  do %>
+                        <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          <% end %>
+        <% else %>
+          <div class="text-muted">
+            <p>
+              Ready to check a todo off your list? Mark a task complete by clicking <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 130%"></i></i>.
+            </p>
           </div>
         <% end %>
       </div>
     </div>
-
 
   </div>
 </div>

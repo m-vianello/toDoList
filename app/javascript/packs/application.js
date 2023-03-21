@@ -20,11 +20,28 @@ function changeColor(color) {
 
 window.changeColor = changeColor
 
-// console.log('outisdemyevent')
-//   console.log('myevent')
-//   const button = document.getElementById("navbarSideCollapse")
-//   button.addEventListener("click", (event) => {
-//     console.log('butts')
-//   })
+// const displayTitle = document.getElementById('displayTitle')
+// const inputTitle = document.getElementById('inputTitle') //.value = 'butts'
 
-// console.log('buts more buts')
+// inputTitle.addEventListener("input", updateDisplayTitle)
+
+// function updateDisplayTitle(e) {
+//   // displayTitle.textContent = e.target.value
+//   console.log('e', e)
+// }
+
+// window.updateDisplayTitle = updateDisplayTitle
+
+// document.addEventListener("turbo:before-fetch-response", function (e) {
+// const input = document.querySelector("input");
+// const log = document.getElementById("values");
+
+// input.addEventListener("input", updateValue);
+
+// function updateValue(e) {
+//   // log.textContent = e.target.value;
+//   console.log('e.target.value', e.target.value)
+// }
+
+// window.updateValue = updateValue
+// })

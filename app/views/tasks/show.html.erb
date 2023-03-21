@@ -75,7 +75,7 @@
       <div class="row">
         <div class="col"></div>
         <div class="col">
-          <%= link_to task_path(@task.id), { style: "text-decoration: none" }, method: :delete  do %>
+          <%= link_to task_path(@task.id), method: :delete do %>
             <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
           <% end %>
         </div>

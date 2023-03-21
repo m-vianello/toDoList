@@ -59,6 +59,14 @@
 
 16. npm i bootstrap-icons
 
-# adding js
+# running on local network
+1. for the ability to run on phone:
+find ip address on computer: wifi settings /details
+
+$ rails server -b 0.0.0.0 -p 3000
+
+url: http://<ip-address>:3000
+ http://192.168.2.154:3000
+
 
 # deploy

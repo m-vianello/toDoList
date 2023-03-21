@@ -49,21 +49,22 @@
     </nav>
 
     <div class="container" style='margin:10px'>
-    <% flash.each do |type, msg| %>
-      <% if type == "success" %>
-        <div class="alert alert-success ">
-          <button type="button" class="btn-close text-end" data-bs-dismiss="alert"></button>
-          <%= msg %>
-        </div>
-      <% elsif type == "alert" %>
-        <div class="alert alert-danger alert-dismissible">
-          <button type="button" class="btn-close text-end" data-bs-dismiss="alert"></button>
-          <%= msg %>
-        </div>
+      <% flash.each do |type, msg| %>
+        <% if type == "success" %>
+          <div class="alert alert-success ">
+            <button type="button" class="btn-close text-end" data-bs-dismiss="alert"></button>
+            <%= msg %>
+          </div>
+        <% elsif type == "alert" %>
+        <% binding.pry %>
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close text-end" data-bs-dismiss="alert"></button>
+            <%= msg %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <%= yield %>
+      <%= yield %>
     </div>
   </body>
 </html>

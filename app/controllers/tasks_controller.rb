@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:show, :edit, :update, :destroy, :complete, :mark_complete, :in_progress, :mark_in_progress]
+  before_action :find_task, only: [:show, :edit, :update, :destroy, :mark_complete, :mark_in_progress]
 
   def index
     @tasks = Task.in_progress.order(:due_date)
@@ -75,9 +75,9 @@ class TasksController < ApplicationController
 
 
   def find_task
-    if params[:id]
+    if params[:id].present?
       @task = Task.find(params[:id])
-    elsif params[:task_id]
+    elsif params[:task_id].present?
       @task = Task.find(params[:task_id])
     end
   end

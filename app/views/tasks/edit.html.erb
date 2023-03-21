@@ -11,12 +11,11 @@
   </div>
 </div>
 
-
 <%= form_for @task do |f| %>
   <div class="mb-3 p-3 bg-body rounded shadow-sm">
     <div class="row">
-    <div class="col">
-      <h1><strong class="text-gray-dark"><%= @task.title %></strong></h1>
+    <div class="col" data-controller="hello">
+      <h1 data-target="hello.output"><strong class="text-gray-dark"><%= @task.title %></strong></h1>
 
     </div>
     <div class="col text-end pr-3">

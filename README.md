@@ -61,12 +61,20 @@
 
 # running on local network
 1. for the ability to run on phone:
-find ip address on computer: wifi settings /details
+  find ip address on computer: wifi settings /details
 
-$ rails server -b 0.0.0.0 -p 3000
+  $ rails server -b 0.0.0.0 -p 3000
 
-url: http://<ip-address>:3000
- http://192.168.2.154:3000
+  url: http://<ip-address>:3000
+  http://192.168.2.154:3000
 
 
-# deploy
+# trying stimulus
+1. npm i @hotwired/stimulus-webpack-helpers
+2. rails webpacker:install:stimulus
+3. yarn & bundle
+4. changes
+  - adds import controllers to packs/application.js ( i moved to the top near other imports)
+  - adds controller dir with hello_controller.js and index.js
+5. restart server (error can't find module jquery in packs/application.js -- remove import and refresh-- no errors)
+6. hello_controller has comment out div, place div in edit.html.erb --success!

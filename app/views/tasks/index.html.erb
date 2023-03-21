@@ -28,7 +28,7 @@
             <div class="row g-0 w-100">
               <div class="col w-75">
                 <div class="row">
-                  <strong class="text-gray-dark">Task# <%= task.id %></strong>
+                  <strong class="text-gray-dark"><%= task.title %></strong>
                 </div>
                 <div class="row">
                   <p>Due: <br> <%= task.due_date.strftime("%Y-%m-%d at %k:%M") %></p>
@@ -101,7 +101,7 @@
             <div class="row g-0 w-100">
               <div class="col w-75">
                 <div class="row">
-                  <strong class="text-gray-dark">Task# <%= task.id %></strong>
+                  <strong class="text-gray-dark"><%= task.title %></strong>
                 </div>
                 <div class="row">
                   <p>Completed: <br> <%= task.completed_at.strftime("%Y-%m-%d at %k:%M") %></p>

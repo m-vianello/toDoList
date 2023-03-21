@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_191902) do
   enable_extension "plpgsql"
 
   create_table "tasks", force: :cascade do |t|
+    t.string "title"
     t.string "note"
     t.datetime "due_date"
     t.datetime "completed_at"

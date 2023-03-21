@@ -70,9 +70,8 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:note, :due_date, :completed_at, :effort_level)
+    params.require(:task).permit(:title, :note, :due_date, :completed_at, :effort_level)
   end
-
 
   def find_task
     if params[:id].present?

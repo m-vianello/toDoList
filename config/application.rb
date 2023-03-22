@@ -27,6 +27,7 @@ module Todolist
       ActiveRecord::Base.connection
     end
     config.hosts << "maria9000.local"
+    config.hosts << "www.example.com"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

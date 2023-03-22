@@ -11,10 +11,11 @@
   gem 'rspec-rails'
   gem 'factory_bot_rails'
 
-5. run rspec --init
-  this outputs
-  create   .rspec
-  create   spec/spec_helper.rb
+** add to spec directory add support directory with files "factory_bot.rb" and "database_cleaner.rb" copy contents
+follow: https://medium.com/@amliving/my-rails-rspec-set-up-6451269847f9 for more factorybot rspec config
+
+5. run rails generate rspec:install
+
 
 6. rails db:create
 7. rails g migration create_tasks

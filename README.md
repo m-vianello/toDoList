@@ -79,3 +79,13 @@ follow: https://medium.com/@amliving/my-rails-rspec-set-up-6451269847f9 for more
   - adds controller dir with hello_controller.js and index.js
 5. restart server (error can't find module jquery in packs/application.js -- remove import and refresh-- no errors)
 6. hello_controller has comment out div, place div in edit.html.erb --success!
+
+
+# system testing
+  https://www.codewithjason.com/rails-testing-hello-world-using-rspec-capybara/
+1. in gemfile test
+  gem 'capybara'
+  gem 'webdrivers'
+  $ bundle
+
+2. add home ip to application.rb config.hosts << "127.0.0.1"

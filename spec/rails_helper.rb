@@ -6,6 +6,7 @@ require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'database_cleaner'
+require "selenium-webdriver"
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -87,4 +88,10 @@ RSpec.configure do |config|
   config.after(:all) do
     DatabaseCleaner.clean
   end
+
+
+  # system testing
+  # Capybara.default_driver = :selenium_chrome
+  # Selenium::WebDriver::Chrome.driver_path = "/usr/local/bin/chromedriver"
+
 end

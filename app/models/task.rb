@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
-  validates :title, presence: true
+  EFFORT_LEVELS = [1, 2, 3].freeze
 
-  # validates :effort_level, inclusion: [1, 2, 3]
+  validates :title, presence: true
+  validates :effort_level, inclusion: EFFORT_LEVELS
 
   scope :in_progress, -> { where(completed_at: nil) }
   scope :completed, -> { where.not(completed_at: nil) }

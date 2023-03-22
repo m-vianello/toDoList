@@ -32,13 +32,19 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="<%= tasks_path %>">ToDoList</a>
+              </li>
+            </ul>
+          <ul class="navbar-nav" data-controller="search">
             <form class="d-flex">
-              <input class="form-control me-2" type="text" placeholder="Search Titles">
+              <input class="form-control me-2" type="text" placeholder="Search Titles" id="searchInput">
               <button class="btn btn-primary" type="button">Search</button>
             </form>
           </ul>
         </div>
+
       </div>
     </nav>
 

@@ -11,17 +11,17 @@
   </div>
 </div>
 
-<div class="mb-3 p-3 bg-body rounded shadow-sm">
+<div class="mb-3 p-3 bg-body rounded shadow-lg">
   <div class="row">
     <div class="col">
       <h1><strong class="text-gray-dark"><%= @task.title %></strong></h1>
-      <div class="row g-0 p-2 rounded border h-75 text-muted">
+      <div class="row g-0 p-2 rounded border text-muted">
         <div class="">
-          <p>Due:  <br><%= @task.due_date.strftime("%l:%M%P %d/%m/%y") %></p>
+          <p>Due:  <br><%= @task.due_date.strftime("%l:%M%P %m/%d/%y") %></p>
         </div>
         <div class="">
           <% if @task.completed_at.present? %>
-            <p>Completed:  <%= @task.completed_at.strftime("%l:%M%P %d/%m/%y") %></p>
+            <p>Completed:  <%= @task.completed_at.strftime("%l:%M%P %m/%d/%y") %></p>
           <% end %>
         </div>
       </div>
@@ -30,7 +30,7 @@
       <div class="row pb-3">
         <div class="col">
           <%= link_to task_path(@task.id), { style: "text-decoration: none" } do %>
-            <i class="fa-regular fa-folder-open" style="color:#26D95D; font-size: 150%" ></i>
+            <i class="fa-regular fa-folder-open" style="color:#999999; font-size: 150%" ></i>
           <% end %>
         </div>
         <div class="col">
@@ -103,10 +103,10 @@
         </div>
         <div class="border-top row m-1 g-0 pt-2">
           <div class="col">
-            <span class="d-block">Created: <%= @task.created_at %></span>
+            <span class="d-block">Created: <%= @task.created_at.strftime("%l:%M%P %m/%d/%y") %></span>
           </div>
           <div class="col">
-            <span class="d-block">Updated: <%= @task.updated_at %></span>
+            <span class="d-block">Updated: <%= @task.updated_at.strftime("%l:%M%P %m/%d/%y") %></span>
           </div>
         </div>
       </div>

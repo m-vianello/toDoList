@@ -21,18 +21,20 @@
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane container active" id="in_progress">
-      <div class="my-3 p-3 bg-body rounded shadow-sm small lh-sm">
+    <div class="tab-pane container active p-0" id="in_progress">
+      <div class="p-3 bg-body rounded shadow-sm small lh-sm">
         <% if @tasks.any? %>
-          <% @tasks.each do |task| %>
-            <div class="text-muted py-3 border-bottom">
+          <% @tasks.each_with_index do |task, index| %>
+
+
+            <div class="text-muted py-3 <%= border_bottom(@tasks, task) %>">
               <div class="row g-0 w-100">
                 <div class="col w-75">
                   <div class="row">
-                    <strong class="text-gray-dark"><%= task.title %></strong>
+                    <strong class="text-gray-dark title"><%= task.title %></strong>
                   </div>
                   <div class="row">
-                    <p>Due: <br> <%= task.due_date.strftime("%l:%M%P %d/%m/%y") %></p>
+                    <p>Due: <br> <%= task.due_date.strftime("%l:%M%P %m/%d/%y") %></p>
                   </div>
                   <div class="row">
                     <p class=""><%= task.note %></p>
@@ -91,6 +93,7 @@
                 </div>
               </div>
             </div>
+
           <% end %>
         <% else %>
           <div class="text-muted">
@@ -103,18 +106,18 @@
       </div>
     </div>
 
-    <div class="tab-pane container fade" id="completed">
-      <div class="my-3 p-3 bg-body rounded shadow-sm small lh-sm">
+    <div class="tab-pane container fade p-0" id="completed">
+      <div class="p-3 bg-body rounded shadow-sm small lh-sm">
         <% if @completed_tasks.any? %>
           <% @completed_tasks.each do |task| %>
-            <div class="text-muted py-3 border-bottom">
+            <div class="text-muted py-3 <%= border_bottom(@completed_tasks, task) %>">
               <div class="row g-0 w-100">
                 <div class="col w-75">
                   <div class="row">
-                    <strong class="text-gray-dark"><%= task.title %></strong>
+                    <strong class="text-gray-dark title"><%= task.title %></strong>
                   </div>
                   <div class="row">
-                    <p>Completed: <br> <%= task.completed_at.strftime("%l:%M%P %d/%m/%y") %></p>
+                    <p>Completed: <br> <%= task.completed_at.strftime("%l:%M%P %m/%d/%y") %></p>
                   </div>
                   <div class="row">
                     <p class=""><%= task.note %></p>

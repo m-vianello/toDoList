@@ -89,9 +89,18 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # set this to false to work with factorybot
+  config.use_transactional_fixtures = false
+
+  # specifyig custom domain for request testing
+  config.before(:each, type: :request) do
+    host! "system-testing.com"
+  end
 
   # system testing
-  # Capybara.default_driver = :selenium_chrome
-  # Selenium::WebDriver::Chrome.driver_path = "/usr/local/bin/chromedriver"
+  config.before(:each, type: :system) do
+    headed = ActiveModel::Type::Boolean.new.cast(ENV["HEADED"])
 
+    driven_by headed ? :selenium : :selenium_chrome_headless
+  end
 end

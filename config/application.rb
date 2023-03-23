@@ -26,10 +26,11 @@ module Todolist
     console do
       ActiveRecord::Base.connection
     end
-    config.hosts << "maria9000.local"
-    config.hosts << "www.example.com" # request testing url
-    config.hosts << "127.0.0.1" # system test url
 
+    # allow requests from testing domains
+    config.hosts << "maria9000.local" # manual testing
+    config.hosts << "127.0.0.1" # system test url
+    config.hosts << "system-testing.com" # request test url
 
     # Configuration for the application, engines, and railties goes here.
     #

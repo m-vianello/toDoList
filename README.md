@@ -89,3 +89,15 @@ follow: https://medium.com/@amliving/my-rails-rspec-set-up-6451269847f9 for more
   $ bundle
 
 2. add home ip to application.rb config.hosts << "127.0.0.1"
+
+
+
+# resources & notes
+1. https://javascript.plainenglish.io/how-to-build-a-search-bar-7d8a8a3d9d00
+2. in packs/application.js
+    function changeColor(color) {
+      document.getElementById('changeColor').style.color=color
+      console.log("color change!")
+    }
+
+    window.changeColor = changeColor <<< this is needed for it to work >>>

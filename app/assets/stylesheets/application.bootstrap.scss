@@ -1,29 +1,39 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-// green #26D95D
-// blue #2649D9
-// pink #D926A2
-// yellow #D9B626
-
 :root {
   --green: #26D95D;
   --blue: #2649D9;
   --pink: #D926A2;
   --yellow: #D9B626;
+  --disable: #999999;
 }
 
 .green {
   color: var(--green);
 }
-
-
-
-.mvnavbar-brand {
-    padding-top: 0.3125rem;
-    padding-bottom: 0.3125rem;
-    margin-right: 1rem;
-    font-size: 1.25rem;
-    text-decoration: none;
-    white-space: nowrap;
+.blue {
+  color: var(--blue);
 }
+.pink {
+  color: var(--pink);
+}
+.yellow {
+  color: var(--yellow);
+}
+.disable {
+  color: var(--disable);
+}
+
+.complete-icon-size-lg {
+  font-size: 130%;
+}
+
+.icon-size-lg {
+  font-size: 150%;
+}
+
+a {
+  text-decoration: none;
+}
+

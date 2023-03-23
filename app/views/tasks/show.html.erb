@@ -1,15 +1,4 @@
-<div class="row ml-5">
-  <div class="col-9">
-    <%= link_to tasks_path, { style: "margin-left: 8px; text-decoration: none" } do %>
-      <i class="fa-solid fa-xmark" style="color:#16161D; font-size: 200%"></i>
-    <% end %>
-  </div>
-  <div class="col-3 pt-1 text-end">
-    <%= link_to new_task_path, { style: "margin-right: 20px; margin-left: 20px; text-decoration: none" } do %>
-      <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
-    <% end %>
-  </div>
-</div>
+<%= render partial: 'inner_nav', locals: { allow_new: true  } %>
 
 <div class="mb-3 p-3 bg-body rounded shadow-lg">
   <div class="row">
@@ -26,61 +15,9 @@
         </div>
       </div>
     </div>
-    <div class="col text-end pr-3">
-      <div class="row pb-3">
-        <div class="col">
-          <%= link_to task_path(@task.id), { style: "text-decoration: none" } do %>
-            <i class="fa-regular fa-folder-open" style="color:#999999; font-size: 150%" ></i>
-          <% end %>
-        </div>
-        <div class="col">
-          <%= link_to edit_task_path(@task.id), { style: "text-decoration: none" } do %>
-            <i id="edit-button" class="fa-regular fa-pen-to-square" style="color:#2649D9; font-size: 150%"></i>
-          <% end %>
-        </div>
-      </div>
-      <div class="row pb-5">
-        <% if @task.completed_at.nil? %>
-          <div class="col">
-            <%= form_for @task, url: task_mark_in_progress_path(@task.id), method: :patch do |f| %>
-              <%= f.button nil, class: "btn p-0" do %>
-                <i class="fa-solid fa-repeat" style="color:#999999; font-size: 150%"></i>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="col">
-            <%= form_for @task, url: task_mark_complete_path(@task.id), method: :patch do |f| %>
-              <%= f.button nil, class: "btn p-0" do %>
-                <i class="fa-regular fa-circle-check" style="color:#D926A2; font-size: 130%"></i>
-              <% end %>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="col">
-            <%= form_for @task, url: task_mark_in_progress_path(@task.id), method: :patch do |f| %>
-              <%= f.button nil, class: "btn p-0" do %>
-                <i class="fa-solid fa-repeat" style="color:#D926A2; font-size: 150%"></i>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="col">
-            <%= form_for @task, url: task_mark_complete_path(@task.id), method: :patch do |f| %>
-              <%= f.button nil, class: "btn p-0" do %>
-                <i class="fa-regular fa-circle-check" style="color:#999999; font-size: 130%"></i>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="row">
-        <div class="col"></div>
-        <div class="col">
-          <%= link_to task_path(@task.id), method: :delete do %>
-            <i class="fa-regular fa-trash-can" style="color:#D9B626; font-size: 150%"></i>
-          <% end %>
-        </div>
-      </div>
-    </div>
+
+    <%= render partial: 'button_nav', locals: { task: @task, disable_show: true, disable_edit: false } %>
+
   </div>
 
   <div class="d-flex text-muted pt-2">
@@ -90,16 +27,16 @@
           <span class="d-block">Note: <%= @task.note %></span>
         </div>
         <div class="pb-3" >
-        <% if @task.effort_level === 1 %>
-            <i class="fa-solid fa-spoon" style="color:#26D95D"></i>
-        <% elsif @task.effort_level === 2 %>
-          <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-          <i class="fa-solid fa-spoon" style="color:#2649D9"></i>
-        <% elsif @task.effort_level === 3 %>
-          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-          <i class="fa-solid fa-spoon" style="color:#D926A2"></i>
-        <% end %>
+          <% if @task.effort_level === 1 %>
+            <i class="fa-solid fa-spoon green"></i>
+          <% elsif @task.effort_level === 2 %>
+            <i class="fa-solid fa-spoon blue"></i>
+            <i class="fa-solid fa-spoon blue"></i>
+          <% elsif @task.effort_level === 3 %>
+            <i class="fa-solid fa-spoon pink"></i>
+            <i class="fa-solid fa-spoon pink"></i>
+            <i class="fa-solid fa-spoon pink"></i>
+          <% end %>
         </div>
         <div class="border-top row m-1 g-0 pt-2">
           <div class="col">

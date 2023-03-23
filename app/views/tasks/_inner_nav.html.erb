@@ -1,0 +1,15 @@
+<div class="row ml-5">
+  <div class="col-9">
+    <%= link_to tasks_path, { style: "margin-left: 8px; text-decoration: none" } do %>
+      <i class="fa-solid fa-xmark" style="color:#16161D; font-size: 200%"></i>
+    <% end %>
+  </div>
+  <div class="col-3 pt-1 text-end">
+    <% if allow_new %>
+      <%= link_to new_task_path, { style: "margin-right: 20px; margin-left: 20px; text-decoration: none" } do %>
+        <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
+      <% end %>
+    <% else %>
+    <% end %>
+  </div>
+</div>

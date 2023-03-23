@@ -1,0 +1,57 @@
+<%= form_for @task do |f| %>
+  <div class="d-flex text-muted pt-3">
+    <div class="pb-3 mb-0 small lh-sm w-100">
+      <div class="d-flex justify-content-between">
+
+        <div class="row">
+          <div class="col-12 mb-3">
+            <label for="note" class="form-label">Title</label>
+            <%= f.text_field :title, { id: "inputTitle", class: "form-control", placeholder: "my todo is...", required: true }  %>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="address" class="form-label">Note</label>
+            <%= f.text_field :note, { class: "form-control", placeholder: "my todo is..." } %>
+          </div>
+
+          <div class="col-12  mb-3">
+            <label for="address" class="form-label">Due Date</label>
+            <%= f.datetime_field :due_date, { class: "form-control", value: due_date } %>
+          </div>
+
+          <% if @task.completed_at.present? %>
+            <div class="col-12 mb-3">
+              <label for="address" class="form-label">Completed Date</label>
+              <%= f.datetime_field :completed_at, { class: "form-control", value: Time.new.strftime("%Y-%m-%dT%k:%M") } %>
+            </div>
+          <% end %>
+
+          <div class="col-12 mb-3">
+            <label for="effort_level" class="form-label">Effort Level</label>
+            <div class="rounded border p-2">
+              <div class="row">
+                <div class="col">
+                  <i class="fa-solid fa-spoon green"></i>
+                </div>
+                <div class="col text-center">
+                  <i class="fa-solid fa-spoon blue"></i>
+                  <i class="fa-solid fa-spoon blue"></i>
+                </div>
+                <div class="col text-end">
+                  <i class="fa-solid fa-spoon pink"></i>
+                  <i class="fa-solid fa-spoon pink"></i>
+                  <i class="fa-solid fa-spoon pink"></i>
+                </div>
+              </div>
+              <%= f.range_field :effort_level, in: 1..3, step:'1', class:"slide form-range my-4"%>
+            </div>
+          </div>
+
+          <div class="col-12 text-center">
+            <%= f.submit button_text, class: "w-25 btn btn-primary btn-sm" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,56 @@
+<div class="col text-end pr-3">
+  <div class="row pb-3">
+    <div class="col">
+      <%= link_to task_path(@task.id) do %>
+        <i class="fa-regular fa-folder-open <%= handle_show(disable_show) %> icon-size-lg" ></i>
+      <% end %>
+    </div>
+    <div class="col">
+      <%= link_to edit_task_path(@task.id) do %>
+        <i id="edit-button" class="fa-regular fa-pen-to-square <%= handle_edit(disable_edit) %> icon-size-lg"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <% if @task.completed_at.nil? %>
+    
+      <div class="col">
+        <%= form_for @task, url: task_mark_in_progress_path(@task.id), method: :patch do |f| %>
+          <%= f.button nil, class: "btn p-0" do %>
+            <i class="fa-solid fa-repeat disable icon-size-lg"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= form_for @task, url: task_mark_complete_path(@task.id), method: :patch do |f| %>
+          <%= f.button nil, class: "btn p-0" do %>
+            <i class="fa-regular fa-circle-check pink complete-icon-size-lg"></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col">
+        <%= form_for @task, url: task_mark_in_progress_path(@task.id), method: :patch do |f| %>
+          <%= f.button nil, class: "btn p-0" do %>
+            <i class="fa-solid fa-repeat pink icon-size-lg"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= form_for @task, url: task_mark_complete_path(@task.id), method: :patch do |f| %>
+          <%= f.button nil, class: "btn p-0" do %>
+            <i class="fa-regular fa-circle-check disable complete-icon-size-lg"></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <%= link_to task_path(@task.id), method: :delete do %>
+        <i class="fa-regular fa-trash-can yellow icon-size-lg"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

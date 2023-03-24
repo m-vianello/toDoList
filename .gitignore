@@ -39,3 +39,4 @@ yarn-debug.log*
 !/app/assets/builds/.keep
 
 .env
+how_i_made_it.md

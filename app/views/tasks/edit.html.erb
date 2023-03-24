@@ -1,13 +1,15 @@
-<%= render partial: 'inner_nav', locals: { allow_new: true } %>
+<%= render partial: 'inner_nav', locals: { allow_index: true, allow_new: true } %>
 
 <%= form_for @task do |f| %>
-  <div class="mb-3 p-3 bg-body rounded shadow-lg" data-controller="hello">
+  <div class="mb-3 p-3  mt-5 bg-body rounded shadow-lg" data-controller="hello">
     <div class="row">
       <div class="col" >
         <h1><strong class="text-gray-dark" id="displayTitle" data-target="hello" ><%= @task.title %></strong></h1>
       </div>
 
-      <%= render partial: 'button_nav', locals: { task: @task, disable_show: false, disable_edit: true } %>
+      <div class="col text-end pr-3">
+        <%= render partial: 'button_nav', locals: { task: @task, disable_show: false, disable_edit: true } %>
+      </div>
   </div>
 
   <%= render partial: 'form', locals: { button_text: "Update", due_date: nil } %>

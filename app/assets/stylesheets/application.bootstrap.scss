@@ -7,22 +7,35 @@
   --pink: #D926A2;
   --yellow: #D9B626;
   --disable: #999999;
+  --eigengrau: #16161D;
 }
 
 .green {
   color: var(--green);
 }
+
 .blue {
   color: var(--blue);
 }
+
 .pink {
   color: var(--pink);
 }
+
 .yellow {
   color: var(--yellow);
 }
+
+.yellow {
+  color: var(--yellow);
+}
+
 .disable {
   color: var(--disable);
+}
+
+.brain-gray {
+  color: var(--eigengrau);
 }
 
 .complete-icon-size-lg {
@@ -33,7 +46,19 @@
   font-size: 150%;
 }
 
+.icon-size-xl {
+  font-size: 200%;
+}
+
 a {
   text-decoration: none;
 }
 
+.inner-nav-new-folder {
+  margin-right: 18px;
+  margin-left: 25px
+}
+
+.inner-nav-index {
+  margin-left: 8px
+}

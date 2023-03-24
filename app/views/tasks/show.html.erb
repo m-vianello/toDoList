@@ -1,23 +1,24 @@
-<%= render partial: 'inner_nav', locals: { allow_new: true  } %>
+<%= render partial: 'inner_nav', locals: { allow_index: true, allow_new: true  } %>
 
-<div class="mb-3 p-3 bg-body rounded shadow-lg">
+<div class="mb-3 p-3 mt-5 bg-body rounded shadow-lg">
   <div class="row">
     <div class="col">
       <h1><strong class="text-gray-dark"><%= @task.title %></strong></h1>
       <div class="row g-0 p-2 rounded border text-muted">
         <div class="">
-          <p>Due:  <br><%= @task.due_date.strftime("%l:%M%P %m/%d/%y") %></p>
+          <p>Due:  <br><%= @task.due_date.to_s(:default_display) %></p>
         </div>
         <div class="">
           <% if @task.completed_at.present? %>
-            <p>Completed:  <%= @task.completed_at.strftime("%l:%M%P %m/%d/%y") %></p>
+            <p>Completed:  <%= @task.completed_at.to_s(:default_display) %></p>
           <% end %>
         </div>
       </div>
     </div>
 
-    <%= render partial: 'button_nav', locals: { task: @task, disable_show: true, disable_edit: false } %>
-
+    <div class="col text-end pr-3">
+      <%= render partial: 'button_nav', locals: { task: @task, disable_show: true, disable_edit: false } %>
+    </div>
   </div>
 
   <div class="d-flex text-muted pt-2">
@@ -27,23 +28,14 @@
           <span class="d-block">Note: <%= @task.note %></span>
         </div>
         <div class="pb-3" >
-          <% if @task.effort_level === 1 %>
-            <i class="fa-solid fa-spoon green"></i>
-          <% elsif @task.effort_level === 2 %>
-            <i class="fa-solid fa-spoon blue"></i>
-            <i class="fa-solid fa-spoon blue"></i>
-          <% elsif @task.effort_level === 3 %>
-            <i class="fa-solid fa-spoon pink"></i>
-            <i class="fa-solid fa-spoon pink"></i>
-            <i class="fa-solid fa-spoon pink"></i>
-          <% end %>
+          <%= handle_effort_level(@task.effort_level) %>
         </div>
         <div class="border-top row m-1 g-0 pt-2">
           <div class="col">
-            <span class="d-block">Created: <%= @task.created_at.strftime("%l:%M%P %m/%d/%y") %></span>
+            <span class="d-block">Created: <%= @task.created_at.to_s(:default_display) %></span>
           </div>
           <div class="col">
-            <span class="d-block">Updated: <%= @task.updated_at.strftime("%l:%M%P %m/%d/%y") %></span>
+            <span class="d-block">Updated: <%= @task.updated_at.to_s(:default_display) %></span>
           </div>
         </div>
       </div>

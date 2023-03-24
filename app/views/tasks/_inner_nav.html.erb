@@ -1,13 +1,17 @@
-<div class="row ml-5">
-  <div class="col-9">
-    <%= link_to tasks_path, { style: "margin-left: 8px; text-decoration: none" } do %>
-      <i class="fa-solid fa-xmark" style="color:#16161D; font-size: 200%"></i>
+<div class="row ml-5 g-0">
+  <div class="col-9 lh-lg">
+    <% if allow_index %>
+      <%= link_to tasks_path, { class: "inner-nav-index" } do %>
+        <i class="fa-solid fa-xmark brain-gray icon-size-xl"></i>
+      <% end %>
+    <% else %>
+      <h1><i class="fa-solid fa-list-ul"></i> My ToDoList</h1>
     <% end %>
   </div>
-  <div class="col-3 pt-1 text-end">
+  <div class="col-3 pt-1 text-end lh-lg">
     <% if allow_new %>
-      <%= link_to new_task_path, { style: "margin-right: 20px; margin-left: 20px; text-decoration: none" } do %>
-        <i class="fa-solid fa-folder-plus" style="color:#26D95D; font-size: 150%"></i>
+      <%= link_to new_task_path, { class:"inner-nav-new-folder" } do %>
+        <i id="create-button" class="fa-solid fa-folder-plus green icon-size-lg"></i>
       <% end %>
     <% else %>
     <% end %>

@@ -22,7 +22,7 @@
           <% if @task.completed_at.present? %>
             <div class="col-12 mb-3">
               <label for="address" class="form-label">Completed Date</label>
-              <%= f.datetime_field :completed_at, { class: "form-control", value: Time.new.strftime("%Y-%m-%dT%k:%M") } %>
+              <%= f.datetime_field :completed_at, { class: "form-control", value: DateTime.now.to_s(:input_display) } %>
             </div>
           <% end %>
 

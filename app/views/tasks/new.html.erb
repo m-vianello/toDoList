@@ -1,9 +1,9 @@
-<%= render partial: 'inner_nav', locals: { allow_new: false } %>
+<%= render partial: 'inner_nav', locals: { allow_index: true, allow_new: false } %>
 
 <%= form_for @task do |f| %>
-  <div class="mb-3 p-3 bg-body rounded shadow-lg">
+  <div class="mb-3 p-3 mt-5 bg-body rounded shadow-lg">
     <h1><strong class="text-gray-dark">New Task</strong></h1>
 
-    <%= render partial: 'form', locals: { button_text: "Create", due_date: (Time.zone.now + 1.week).strftime("%Y-%m-%dT%k:%M") } %>
+    <%= render partial: 'form', locals: { button_text: "Create", due_date: (DateTime.now + 1.week).to_s(:input_display) } %>
   </div>
 <% end %>

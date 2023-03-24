@@ -11,7 +11,28 @@ module TasksHelper
     disable_edit ? "disable" : "blue"
   end
 
-  def handle_completed(task_in_progress)
+  def handle_in_progress(task_in_progress)
     task_in_progress ? "disable" : "pink"
+  end
+
+  def handle_complete(task_in_progress)
+    task_in_progress ? "pink" : "disable"
+  end
+
+  def handle_effort_level(effort_level)
+    if effort_level === 1
+      content_tag(:i, "" , class: "fa-solid fa-spoon green")
+    elsif effort_level === 2
+      safe_join([
+        content_tag(:i, "" , class: "fa-solid fa-spoon blue"),
+        content_tag(:i, "" , class: "fa-solid fa-spoon blue")
+      ])
+    elsif effort_level === 3
+      safe_join([
+        content_tag(:i, "" , class: "fa-solid fa-spoon pink"),
+        content_tag(:i, "" , class: "fa-solid fa-spoon pink"),
+        content_tag(:i, "" , class: "fa-solid fa-spoon pink")
+      ])
+    end
   end
 end

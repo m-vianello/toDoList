@@ -13,7 +13,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "esbuild": "^0.17.12",
-    "sass": "^1.59.3",
+    "sass": "^1.60.0",
     "stimulus": "^3.2.1",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
@@ -22,5 +22,8 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3"
+  },
+  "scripts": {
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }

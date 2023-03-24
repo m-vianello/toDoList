@@ -30,6 +30,34 @@ RSpec.describe Task do
       end
     end
 
+    context "due_date" do
+      context "with missing due_date" do
+        let(:task) do
+          FactoryBot.build(
+            :task,
+            due_date: nil,
+          )
+        end
+
+        it "is not valid" do
+          expect(task).not_to be_valid
+        end
+      end
+
+      context "with present due_date" do
+        let(:task) do
+          FactoryBot.build(
+            :task,
+            due_date: DateTime.new(1981, 8, 14, 9, 15, 0),
+          )
+        end
+
+        it "is valid" do
+          expect(task).to be_valid
+        end
+      end
+    end
+
     context "effort_level" do
       context "with missing effort_level" do
         let(:task) do

@@ -16,7 +16,7 @@
 
           <div class="col-12  mb-3">
             <label for="address" class="form-label">Due Date</label>
-            <%= f.datetime_field :due_date, { class: "form-control", value: due_date } %>
+            <%= f.datetime_field :due_date, { class: "form-control", value: due_date, required: true } %>
           </div>
 
           <% if @task.completed_at.present? %>

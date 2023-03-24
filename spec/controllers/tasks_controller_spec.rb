@@ -28,14 +28,30 @@ RSpec.describe TasksController, type: :request do
   end
 
   describe "creating a task" do
-    subject { post tasks_path, params: { task: { title: "bananas", effort_level: 1 } } }
+    subject { post tasks_path, params: params }
 
-    it "redirects to the tasks_path and creates a new record", :aggregate_failures do
-      expect(Task.count).to eq(0)
-      subject
+    context "with required params" do
+      let(:params) { { task: { title: "bananas", effort_level: 1, due_date: DateTime.new(1981, 8, 14, 9, 15, 0) } } }
 
-      expect(response).to redirect_to(tasks_path)
-      expect(Task.count).to eq(1)
+      it "redirects to the tasks_path and creates a new record", :aggregate_failures do
+        expect(Task.count).to eq(0)
+        subject
+
+        expect(response).to redirect_to(tasks_path)
+        expect(Task.count).to eq(1)
+      end
+    end
+
+    context "with missing required params" do
+      let(:params) { { task: { title: "bananas", effort_level: 1 } } }
+
+      it "redirects to the new_task_path and does not create a new record", :aggregate_failures do
+        expect(Task.count).to eq(0)
+        subject
+
+        expect(response).to redirect_to(new_task_path)
+        expect(Task.count).to eq(0)
+      end
     end
   end
 

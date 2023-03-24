@@ -11,26 +11,26 @@ RSpec.describe TasksController, type: :system do
       expect(page).to have_content("Completed(0)")
 
       find("#create-button").click
-      expect(current_path).to eql(new_task_path)
+      expect(page).to have_current_path(new_task_path)
       expect(page).to have_content("New Task")
-      fill_in "task[title]", with: "Call the Vet(system test)"
-      fill_in "task[note]", with: "555-555-9000"
+      fill_in "task[title]", with: "Create a system test"
+      fill_in "task[note]", with: "install capybara"
       fill_in "task[due_date]", with: "03/30/2023, 07:43 PM"
       fill_in "task[effort_level]", with: 1
       click_on "Create"
 
-      expect(current_path).to eql(tasks_path)
+      expect(page).to have_current_path(tasks_path)
       expect(page).to have_content("Task created!")
       expect(page).to have_content("In Progress(1)")
       expect(page).to have_content("Completed(0)")
 
       find("#view-button").click
-      task = Task.find_by(title: "Call the Vet(system test)")
+      task = Task.find_by(title: "Create a system test")
 
-      expect(current_path).to eql(task_path(task.id))
+      expect(page).to have_current_path(task_path(task.id))
 
       find("#edit-button").click
-      expect(current_path).to eql(edit_task_path(task.id))
+      expect(page).to have_current_path(edit_task_path(task.id))
       fill_in "task[effort_level]", with: 3
       click_on "Update"
       expect(current_path).to eql(tasks_path)
@@ -42,7 +42,7 @@ RSpec.describe TasksController, type: :system do
       expect(page).to have_content("Completed(1)")
 
       find("#completed-tab").click
-      expect(page).to have_content("Call the Vet")
+      expect(page).to have_content("Create a system test")
 
       find("#in-progress-button").click
       expect(page).to have_content("Task returned to in-progress!")

@@ -31,6 +31,7 @@ module Todolist
     config.hosts << "maria9000.local" # manual testing
     config.hosts << "127.0.0.1" # system test url
     config.hosts << "system-testing.com" # request test url
+    config.hosts << "rails-todolist.herokuapp.com" # heroku
 
     # Configuration for the application, engines, and railties goes here.
     #
